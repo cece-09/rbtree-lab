@@ -1,3 +1,31 @@
+# [SWJungle] Week 04 RBTree lab
+SW사관학교 정글 4주차 레드 블랙 트리 과제 구현입니다. 아래는 과제 제출 Pull Request, 과제설명서 전문입니다.
+
+[수행 결과]
+* 전체 케이스 통과 완료하였습니다.
+* Valgrind 체크에서 전체 메모리가 반환됨을 확인하였습니다.
+
+[구현 방법]
+* sentinel node를 사용하여 구현하였습니다.
+* 과제의 rbtree.c에 초기 명시된 함수 외에 다음과 같은 함수를 구현해 사용하였습니다.
+
+Function
+1. `void rbtree_rotate_left(rbtree *, node_t *);` : 노드를 기준으로 트리 좌회전
+2. `void rbtree_rotate_right(rbtree *, node_t *);` : 노드를 기준으로 트리 우회전
+3. `void rbtree_insert_fixup(rbtree *, node_t *);` : 노드 삽입 시 레드블랙 특성 복구
+4. `void rbtree_delete_fixup(rbtree *, node_t *);` : 노드 삭제 시 레드블랙 특성 복구
+5. `void rbtree_transplant(rbtree *, node_t *, node_t *);` : 두 번째 노드를 첫 번째 노드의 자리로 이동
+6. `node_t *rbtree_minmax(const rbtree *, node_t *, ext);` : `ext` 타입을 받아 노드를 루트로 하는 서브트리의 최소/최댓값 반환
+7. `void postorder(const rbtree *, node_t *);` : 메모리 해제를 위한 트리 후위순회
+8. `void inorder(const rbtree *, node_t *, key_t *, int *, int);` : 오름차순으로 정렬해 배열에 담기 위한 트리 중위순회
+
++) Type
+`typedef enum { MIN, MAX } ext;`:  최소/최대 구분 플래그 (rbtree_minmax 함수)
+
+
+---
+
+
 # Red-Black Tree 구현
 
 Balanced search tree로 많이 쓰이는 Red-black tree (이하 RB tree)를 C 언어로 구현하는 과제입니다.
